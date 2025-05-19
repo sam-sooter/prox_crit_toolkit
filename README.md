@@ -1,1 +1,1 @@
-# d2
+# Measuring proximity to criticality
