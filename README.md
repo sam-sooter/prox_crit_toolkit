@@ -13,7 +13,7 @@ Given an observed time series, d<sub>2</sub> quantifies how close the underlying
 
 The `\src\matlab` and `\src\python` directories contain the MATLAB and python implementations of d<sub>2</sub>, respectively.
 
-The `\test` directory contains example applications of our approach on simulated data and electrophysiological data from mouse visual cortex [Buzsaki].
+The `\demo` directory contains example applications of our approach on simulated data and electrophysiological data from mouse visual cortex [Buzsaki].
 
 The software has been tested with MATLAB version xx-yy and Python version aa-bb. 
 ## Citing this work
