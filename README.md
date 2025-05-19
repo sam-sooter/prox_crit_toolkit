@@ -1,6 +1,11 @@
 # Measuring proximity to criticality
 
-MATLAB and Python implementation of the d<sub>2</sub> measure of proximity to criticality described in Sooter et al. [link to paper]
+[![][license-img]][license-url]
+
+[license-img]: https://img.shields.io/github/license/mashape/apistatus.svg
+[license-url]: https://github.com/egokcen/DLAG/blob/master/LICENSE.md
+
+This project contains MATLAB and Python implementations of the d<sub>2</sub> measure of proximity to criticality described in Sooter et al. [link to paper]
 
 <img src="https://github.com/user-attachments/assets/d1ef48e4-b77b-49a2-9905-53daa52da9cb" style="width:50%; height:auto;">
 
