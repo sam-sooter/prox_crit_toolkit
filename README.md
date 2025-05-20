@@ -7,7 +7,8 @@
 
 This project contains MATLAB and Python implementations of the d<sub>2</sub> measure of proximity to criticality described in Sooter et al. [link to paper]
 
-<img src="https://github.com/user-attachments/assets/d1ef48e4-b77b-49a2-9905-53daa52da9cb" style="width:50%; height:auto;">
+<img src="https://github.com/user-attachments/assets/34e8e526-59b4-40e8-8e4a-099933aa4f88" style="width:50%; height:auto;">
+
 
 Given an observed time series, d<sub>2</sub> quantifies how close the underlying dynamics is to criticality, i.e. how close it is to a scale-invariant boundary between different dynamical regimes. Specifically, d<sub>2</sub> answers the question "How distinguishable (in the information-theoretic sense) is this system from a system at criticality?" This approach goes beyond previous methods for assessing proximity to criticality in 
 
