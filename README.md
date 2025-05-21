@@ -45,7 +45,7 @@ For additional information on getting started, as well as subtler usage details,
 this project's wiki [link]
 
 ## Contact
-For questions, please contact Sam Sooter at sooter@uark.edu or Woodrow Shew at shew@uark.edu
+For questions, please contact Sam Sooter at jssooter@gmail.com or Woodrow Shew at shew@uark.edu
 
 ## License
 [MIT](LICENSE.md)
