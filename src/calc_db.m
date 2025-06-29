@@ -1,4 +1,4 @@
-function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db_final(x, order, deltaT, b, with_err_bars, with_QC, with_parallel, fit_method)
+function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db(x, order, deltaT, b, with_err_bars, with_QC, with_parallel, fit_method)
 
 %% INPUTS
 
