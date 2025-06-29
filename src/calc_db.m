@@ -333,7 +333,7 @@ end
 function QC_plot(kern, kernc, db, b, deltaT)
 figure; dim = length(kern)-b/2;
 for i = 1:dim
-    subplot(ceil(sqrt(dim)), ceil(sqrt(dim)), i);
+    subplot(1, dim, i);
     hold on;
     xx = linspace(kernc(i)-0.2, kernc(i)+0.2, 100);
     klr = zeros(size(xx));
@@ -349,8 +349,10 @@ for i = 1:dim
 
     xline(kernc(i), 'k', 'LineWidth', 2)
     yline(db, 'k', 'LineWidth', 2)
-    xlabel(['$(\phi_c)_' num2str(i) '$'], 'Interpreter', 'latex', 'FontSize', 16);
-    ylabel('KL rate (bits/s)', 'FontSize', 12);
-    set(gca, 'LineWidth', 1); box on;
+    set(gca, 'FontSize', 12);
+    xlabel(['$(\phi_c)_' num2str(i) '$'], 'Interpreter', 'latex', 'FontSize', 17);
+    ylabel('KL rate (bits/s)', 'FontSize', 14);
+    set(gca, 'LineWidth', 1.5); box on;
+    yl = ylim; ylim([0 yl(2)]);
 end
 end
