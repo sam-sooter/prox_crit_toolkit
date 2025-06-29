@@ -26,12 +26,7 @@ you use any portion of this code in your own work.
 ## Installation guide
 
 Simply download and extract the latest release of this project to your local working directory. You will also need to install the 
-[Matlab Optimization Toolbox] and the [Parallel Computing Toolbox] if these are not already included in your Matlab build.
-
-## Getting started
-
-Then to get familiar with the methods in this codepack and their usage, check out the
-[`demo`](demo) directory.
+[Optimization Toolbox](https://www.mathworks.com/help/optim/index.html) and [Parallel Computing Toolbox](https://www.mathworks.com/help/parallel-computing/index.html) if these are not already included in your Matlab build.
 
 ## Contact
 For questions, please contact Sam Sooter at jssooter@gmail.com or Woodrow Shew at shew@uark.edu
