@@ -14,7 +14,7 @@ Given an observed time series, d<sub>2</sub> quantifies how close the underlying
 
 The main code is in the `\src` directory.
 
-The `\demo` directory contains example applications of our approach on simulated data and electrophysiological data from mouse visual cortex [Buzsaki].
+The `\demo` directory contains example applications to simulated data and electrophysiological data from mouse visual cortex [Buzsaki].
 
 The software has been tested with MATLAB version R2024b.
 
@@ -25,17 +25,13 @@ you use any portion of this code in your own work.
 
 ## Installation guide
 
-Simply download and extract the latest release of this project to your local working directory. You may need to install the 
-[Matlab Optimization Toolbox]
-before getting started, if it's not already installed in your Matlab build.
-
-[add...]
+Simply download and extract the latest release of this project to your local working directory. You will also need to install the 
+[Matlab Optimization Toolbox] and the [Parallel Computing Toolbox] if these are not already included in your Matlab build.
 
 ## Getting started
 
-Execute `startup.m` to add all necessary dependencies to the Matlab path.
 Then to get familiar with the methods in this codepack and their usage, check out the
-[`demo`](demo) directory. There, ??
+[`demo`](demo) directory.
 
 ## Contact
 For questions, please contact Sam Sooter at jssooter@gmail.com or Woodrow Shew at shew@uark.edu
