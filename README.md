@@ -5,7 +5,7 @@
 [license-img]: https://img.shields.io/github/license/mashape/apistatus.svg
 [license-url]: https://github.com/egokcen/DLAG/blob/master/LICENSE.md
 
-This project contains a MATLAB implementation of the d<sub>2</sub> measure of proximity to criticality described in Sooter et al. [link to paper]
+This project contains a MATLAB implementation of the d<sub>2</sub> measure of proximity to criticality described in Sooter et al., Defining and Measuring Proximity to Criticality, bioRxiv (2025). 
 
 <img src="https://github.com/user-attachments/assets/34e8e526-59b4-40e8-8e4a-099933aa4f88" style="width:50%; height:auto;">
 
