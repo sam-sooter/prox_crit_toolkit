@@ -36,14 +36,18 @@ T = 1e4; % number of time steps
 x = runAR(kern, sigma, T); % simulate AR model
 
 
-% d2 settings (minimal)
+% d2 settings (MINIMAL)
 order = length(kern); % AR model order
 deltaT = 1; % time between consecutive steps in time series (in s)
 b = 6; % calculate d2 (rather than d4, d6, ...)
-with_err_bars = false; % don't calculate error bars
-with_QC = false; % don't make quality control plots
-with_parallel = false; % don't use parallel computing
-fit_method = 'YuleWalker'; % AR fit method
+
+% Optional arguments
+dbopt = [];
+dbopt.with_err_bars = true; % calculate error bars? [default=false]
+dbopt.with_QC = false; % make quality control plots? [default=false]
+dbopt.with_parallel = false; % use parallel computing? [default=false]
+dbopt.fit_method = 'YuleWalker'; % AR fit method [default='YuleWalker']
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,8 +58,8 @@ fit_method = 'YuleWalker'; % AR fit method
 
 % Note first step is to normalize x to have unit variance
 
-[db, sddb, kernf, sigmaf, H, kernc, exit_status] = calc_db(x, order, deltaT, ...
-    b, with_err_bars, with_QC, with_parallel, fit_method);
+[db, sddb, kernf, sigmaf, H, kernc, exit_status] = calc_db(x, order, ...
+    deltaT, b, dbopt);
 
 disp(['original kernel: [' num2str(kern(:)') ']'])
 

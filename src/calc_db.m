@@ -1,4 +1,4 @@
-function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db(x, order, deltaT, b, with_err_bars, with_QC, with_parallel, fit_method)
+function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db(x, order, deltaT, b, dbopt) 
 
 %% INPUTS
 
@@ -15,15 +15,17 @@ function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db(x, order, delt
 % b (int): the type of criticality to calculate proximity to (b = 2, 4, 6, ...,
 % 2*order)
 
-% with_err_bars (bool): if true, calculate error bars for db
+% dbopt: options structure with OPTIONAL parameters 
+% % name (type [DEFAULT]): definition
+%   
+%   with_err_bars (bool [False]): if true, calculate error bars for db
+%   with_QC (bool [False]): if true, make quality control plots
 
-% with_QC (bool): if true, make quality control plots
+%   with_parallel (bool [False]): if true, use parallel computing (only speeds up
+%       calculation if with_err_bars = true)
 
-% with_parallel (bool): if true, use parallel computing (only speeds up
-% calculation if with_err_bars = true
-
-% fit_method (string): 'YuleWalker' to use Yule-Walker method for AR model
-% fitting, 'MaxLikelihood' to use maximum likelihood AR fitting
+%   fit_method (string ['YuleWalker']): 'YuleWalker' to use Yule-Walker method for AR model
+%       fitting, 'MaxLikelihood' to use maximum likelihood AR fitting
 
 %% OUTPUTS
 
@@ -43,9 +45,19 @@ function [db, sddb, kern, sigma, H, kernc, exit_status] = calc_db(x, order, delt
 % the b critical manifold
 
 % exit_status (int): 0 if all calculations were successful, 1 otherwise
-
-
 exit_status = 0;
+
+%% Process options
+% Default values
+fit_method      = 'YuleWalker';
+with_err_bars   = false;
+with_QC         = false;
+with_parallel   = false;
+% Read any modifications from 'dbopt'
+if isfield(dbopt,'fit_method'); fit_method = dbopt.fit_method; end
+if isfield(dbopt,'with_err_bars'); with_err_bars = dbopt.with_err_bars; end
+if isfield(dbopt,'with_QC'); with_QC = dbopt.with_QC; end
+if isfield(dbopt,'with_parallel'); with_parallel = dbopt.with_parallel; end
 
 % If x is a single time series: cast as a 1x1 cell array.
 if ~iscell(x); x = {x}; end
@@ -107,14 +119,19 @@ if with_err_bars
     STEP = 0.001;
     check = true;
     while check
+        found_problem = false;
         for j = 1:order
             % if STEP will remove kern from stable region, reduce STEP
             if explosive(kern(:)+STEP*[zeros(1, j-1) 1 zeros(1, order-j)]')
+                found_problem = true;  % We need to go back and check again,
+                                       % before computing gradient
                 STEP = STEP/10;
                 break;
             end
         end
-        check = false;
+        % At this point we have checked STEP in all directions
+        %   None of them redsult in an explosive model
+        if found_problem == false; check = false; end
     end
 
     if with_parallel
@@ -182,8 +199,11 @@ elseif length(kern)==b/2
     closest_model.sigmac = get_sigmac(kern, temp);
     closest_model.kernc = temp;
 else
+
     objective = @(kernc) get_klr_b(kern, kernc, b,'integral');
+    %objective = @(kernc) get_klr_b(kern, kernc, b,'trapz');
     
+
     % Starting point: solve the linear system to minimze L2 
     %    distance to Mb
     [~, cme] = calc_dbv1(kern, b);
@@ -202,6 +222,7 @@ else
     nonlcon = @(kernc) con(kernc, b);
     [x, db] = fmincon(objective, kernc0, [], [], [], [], [], [], nonlcon, options);
 
+    % Lift from the reduced kernel
     closest_model.kernc = beta_lift(x, b);
     closest_model.sigmac = get_sigmac(kern, closest_model.kernc);
 
