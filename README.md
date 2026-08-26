@@ -29,6 +29,3 @@ Simply download and extract the latest release of this project to your local wor
 
 ## Contact
 For questions, please contact Sam Sooter at jssooter@gmail.com or Woodrow Shew at shew@uark.edu
-
-## License
-[MIT](LICENSE.md)
